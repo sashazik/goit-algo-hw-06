@@ -29,7 +29,7 @@ edges = [
 for u, v, w in edges:
     G.add_edge(u, v, weight=w)
 
-# Візуалізація (за бажанням можна закоментувати, щоб не вискакувало вікно)
+# Візуалізація
 plt.figure(figsize=(10, 8))
 pos = nx.spring_layout(G, seed=42)
 nx.draw(G, pos, with_labels=True, node_size=2500, node_color="lightgreen", 
@@ -39,7 +39,7 @@ nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 plt.title("Транспортна мережа міста")
 plt.show()
 
-# --- ЗАВДАННЯ 2: DFS і BFS (ВИПРАВЛЕНО) ---
+# --- ЗАВДАННЯ 2: DFS і BFS ---
 
 start_node = "Аеропорт"
 end_node = "Університет"
@@ -69,7 +69,6 @@ except nx.NetworkXNoPath:
 print(f"\n--- Найкоротший шлях (Дейкстра) ---")
 
 try:
-    # Тут ми обов'язково вказуємо weight='weight', щоб врахувати відстань
     dijkstra_path = nx.dijkstra_path(G, source=start_node, target=end_node, weight='weight')
     dijkstra_length = nx.dijkstra_path_length(G, source=start_node, target=end_node, weight='weight')
     
